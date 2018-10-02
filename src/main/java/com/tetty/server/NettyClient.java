@@ -124,6 +124,7 @@ public class NettyClient {
             group.shutdownGracefully();
 
             //断线重连
+            //todo: 需要解决使用list的形式添加ChannelHandler在断线重连时的重复添加问题
             scheduledExecutor.execute(new Runnable() {
 
                 public void run() {

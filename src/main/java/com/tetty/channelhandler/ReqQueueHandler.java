@@ -1,26 +1,22 @@
 package com.tetty.channelhandler;
 
-import io.netty.channel.ChannelHandlerAdapter;
-import io.netty.channel.ChannelHandlerContext;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
-
-import org.slf4j.LoggerFactory;
-
 import ch.qos.logback.classic.Logger;
-
 import com.tetty.listener.RespHandlerListener;
 import com.tetty.pojo.Header;
 import com.tetty.pojo.TettyMessage;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerAdapter;
+import io.netty.channel.ChannelHandlerContext;
+import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * 客户端发送请求的Handler
  * @author Administrator
  *
  */
+@ChannelHandler.Sharable
 public class ReqQueueHandler extends ChannelHandlerAdapter{
 	Logger log = (Logger)LoggerFactory.getLogger(ReqQueueHandler.class);
 	//第一种方式，将要发送的消息放在阻塞队列中，开启一个线程读取阻塞队列中积压的消息进行发送

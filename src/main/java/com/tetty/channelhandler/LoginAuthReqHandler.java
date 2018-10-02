@@ -13,7 +13,6 @@ import com.tetty.pojo.TettyMessage;
 /**
  * 客户端发起握手请求的channelhandler
  * @author Administrator
- *
  */
 public class LoginAuthReqHandler extends ChannelHandlerAdapter{
 	Logger log = (Logger)LoggerFactory.getLogger(LoginAuthReqHandler.class);
