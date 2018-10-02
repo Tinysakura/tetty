@@ -12,7 +12,6 @@ import com.tetty.pojo.TettyMessage;
 /**
  * 服务端处理服务端发送的消息的Handler
  * @author Administrator
- *
  */
 public class RespQueueHandler extends ChannelHandlerAdapter{
 	private ReqHandlerListener reqHandler;

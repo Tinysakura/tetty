@@ -7,7 +7,7 @@ import com.netty.server.NettyServer;
 import ch.qos.logback.classic.Logger;
 
 /**
- * netty服务端启动类
+ * netty服务端启动类(注入到ioc容器并调用serverStart方法)
  * @author Mr.Chen
  * date: 2018年8月14日 上午11:41:17
  */

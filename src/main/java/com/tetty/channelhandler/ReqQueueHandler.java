@@ -23,6 +23,7 @@ import com.tetty.pojo.TettyMessage;
  */
 public class ReqQueueHandler extends ChannelHandlerAdapter{
 	Logger log = (Logger)LoggerFactory.getLogger(ReqQueueHandler.class);
+	//第一种方式，将要发送的消息放在阻塞队列中，开启一个线程读取阻塞队列中积压的消息进行发送
 	private LinkedBlockingQueue<TettyMessage> reqQueue = new LinkedBlockingQueue<TettyMessage>();
 	private ArrayList<TettyMessage> reqTest = new ArrayList<TettyMessage>();
 	private RespHandlerListener respHandler;
@@ -61,7 +62,7 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 		
 		if(rec.getHeader().getType() == Header.Type.LOGIN_RESP){//说明握手成功，客户顿主动发送心跳消息
 			//ctx.executor().execute(new MessageSendTask(ctx, reqQueue));
-			//ctx.executor().scheduleAtFixedRate(new Test(ctx, reqTest),0,20000,TimeUnit.MILLISECONDS);
+			ctx.executor().scheduleAtFixedRate(new Test(ctx, reqTest),0,20000,TimeUnit.MILLISECONDS);
 		}else{//如果收到的是其他类型的消息直接交给respHandler处理
 			respHandler.readResp(ctx, rec);
 		}
@@ -77,7 +78,7 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 		}
 		
 		public void run() {
-			while(!Thread.currentThread().isInterrupted()){
+			while(!Thread.currentThread().isInterrupted() && !stop){
 				try {
 					ctx.writeAndFlush(msg.take());
 				} catch (InterruptedException e) {
@@ -88,7 +89,7 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 		}
 		
 	}
-	
+
 	private class Test implements Runnable{
 		private final ChannelHandlerContext ctx;
 		private final ArrayList<TettyMessage> msg;
@@ -97,22 +98,22 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 			this.ctx = ctx;
 			this.msg = msg;
 		}
-		
+
 		public void run() {
 			log.info("test run");
-			
+
 			for(int i=0;i<10;i++){
 				msg.add(buildEcho());
 			}
-			
+
 			Iterator<TettyMessage> iterator = msg.iterator();
-			
+
 			while(iterator.hasNext()){
 				ctx.writeAndFlush(iterator.next());
 				iterator.remove();
 			}
 		}
-		
+
 	}
 
 	public static TettyMessage buildEcho(){
