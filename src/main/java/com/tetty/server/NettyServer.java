@@ -1,16 +1,4 @@
-package com.netty.server;
-
-import com.tetty.channelhandler.ReqQueueHandler;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
+package com.tetty.server;
 
 import com.tetty.channelhandler.HeartRespHandler;
 import com.tetty.channelhandler.LoginAuthRespHandler;
@@ -20,10 +8,15 @@ import com.tetty.encode.TettyMessageEncode;
 import com.tetty.listener.ReqHandlerListener;
 import com.tetty.pojo.Header;
 import com.tetty.pojo.TettyMessage;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.*;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

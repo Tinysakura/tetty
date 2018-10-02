@@ -1,4 +1,4 @@
-package com.tetty.common;
+package com.tetty.consts;
 
 //netty的一些配置信息，后期要修改为从配置文件中获取
 public class NettyConsts {

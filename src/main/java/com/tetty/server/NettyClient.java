@@ -1,10 +1,10 @@
-package com.netty.server;
+package com.tetty.server;
 
 import com.tetty.channelhandler.HeartReqHandler;
 import com.tetty.channelhandler.LoginAuthReqHandler;
 import com.tetty.channelhandler.ReqQueueHandler;
 import com.tetty.common.ChannelContext;
-import com.tetty.common.NettyConsts;
+import com.tetty.consts.NettyConsts;
 import com.tetty.decode.TettyMessageDecoder;
 import com.tetty.encode.TettyMessageEncode;
 import com.tetty.listener.RespHandlerListener;
@@ -156,7 +156,7 @@ public class NettyClient {
             public void readResp(ChannelHandlerContext ctx, TettyMessage resp) {
                 byte type = resp.getHeader().getType();
                 if (type == Header.Type.ECHO_RESP) {
-                    log.info("echo:{}" + resp.getBody());
+                    log.info("echo:{}", resp.getBody());
                 } else {
                     //如果消息不是ECHO类型的则将消息透传给下一个ChannelHandler
                     ctx.fireChannelRead(resp);

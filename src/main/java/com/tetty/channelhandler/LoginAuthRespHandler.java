@@ -1,5 +1,6 @@
 package com.tetty.channelhandler;
 
+import com.tetty.enums.LoginStatusEnum;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
@@ -51,17 +52,17 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter{
 			InetSocketAddress address = (InetSocketAddress)ctx.channel().remoteAddress();
 			if(!whiteIp.contains(address.getAddress().getHostAddress())){
 				//如果连接的节点的ip地址不在白名单中，拒绝连接
-				log.warn("不在白名单内的节点试图接入，已拒绝");
-				ctx.writeAndFlush(buildLoginResp((byte)-1));
+				log.warn(LoginStatusEnum.NOT_IN_WHITE_TABLES.getMsg());
+				ctx.writeAndFlush(buildLoginResp(LoginStatusEnum.NOT_IN_WHITE_TABLES.getCode()));
 			}else{//判断节点是否已连入
 				if(loginedNode.containsKey(ctx.channel().remoteAddress().toString())){
-					log.warn("重复连接");
-					ctx.writeAndFlush(buildLoginResp((byte)-2));
+					log.warn(LoginStatusEnum.REPEAT_LOGIN.getMsg());
+					ctx.writeAndFlush(buildLoginResp(LoginStatusEnum.REPEAT_LOGIN.getCode()));
 				}else{
-				    log.warn("同意接入");
+				    log.warn(LoginStatusEnum.NORMAL_LOGIN.getMsg());
 				    loginedNode.put(ctx.channel().remoteAddress().toString(), true);
 				    ApplicationContext.add(rec.getHeader().getSessionId(), ctx);
-				    ctx.writeAndFlush(buildLoginResp((byte)0));
+				    ctx.writeAndFlush(buildLoginResp(LoginStatusEnum.NORMAL_LOGIN.getCode()));
 				}
 			}
 		}else{

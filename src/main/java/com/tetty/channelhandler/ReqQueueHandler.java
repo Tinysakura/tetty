@@ -25,7 +25,6 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 	Logger log = (Logger)LoggerFactory.getLogger(ReqQueueHandler.class);
 	//第一种方式，将要发送的消息放在阻塞队列中，开启一个线程读取阻塞队列中积压的消息进行发送
 	private LinkedBlockingQueue<TettyMessage> reqQueue = new LinkedBlockingQueue<TettyMessage>();
-	private ArrayList<TettyMessage> reqTest = new ArrayList<TettyMessage>();
 	private RespHandlerListener respHandler;
 	private volatile boolean stop = false;
 	
@@ -39,10 +38,6 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public synchronized void sendTest(TettyMessage req){
-		reqTest.add(req);
 	}
 	
 	public void stopSend(){
@@ -60,9 +55,9 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 			throws Exception {
         TettyMessage rec = (TettyMessage)msg;
 		
-		if(rec.getHeader().getType() == Header.Type.LOGIN_RESP){//说明握手成功，客户顿主动发送心跳消息
+		if(rec.getHeader().getType() == Header.Type.LOGIN_RESP){//说明握手成功，客户端主动发送队列中的消息
+			//使用过程中发现了阻塞队列阻塞了主线程
 			//ctx.executor().execute(new MessageSendTask(ctx, reqQueue));
-			ctx.executor().scheduleAtFixedRate(new Test(ctx, reqTest),0,20000,TimeUnit.MILLISECONDS);
 		}else{//如果收到的是其他类型的消息直接交给respHandler处理
 			respHandler.readResp(ctx, rec);
 		}
@@ -80,6 +75,7 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 		public void run() {
 			while(!Thread.currentThread().isInterrupted() && !stop){
 				try {
+					log.info("阻塞队列接收到消息开始发送");
 					ctx.writeAndFlush(msg.take());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -90,40 +86,4 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 		
 	}
 
-	private class Test implements Runnable{
-		private final ChannelHandlerContext ctx;
-		private final ArrayList<TettyMessage> msg;
-
-		public Test(ChannelHandlerContext ctx,ArrayList<TettyMessage> msg){
-			this.ctx = ctx;
-			this.msg = msg;
-		}
-
-		public void run() {
-			log.info("test run");
-
-			for(int i=0;i<10;i++){
-				msg.add(buildEcho());
-			}
-
-			Iterator<TettyMessage> iterator = msg.iterator();
-
-			while(iterator.hasNext()){
-				ctx.writeAndFlush(iterator.next());
-				iterator.remove();
-			}
-		}
-
-	}
-
-	public static TettyMessage buildEcho(){
-		TettyMessage req = new TettyMessage();
-		Header header = new Header();
-		header.setType(Header.Type.ECHO_REQ);
-		
-		req.setHeader(header);
-		req.setBody("掌声送给社会人");
-		
-		return req;
-	}
 }
