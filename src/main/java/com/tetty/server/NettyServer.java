@@ -1,11 +1,11 @@
 package com.tetty.server;
 
+import com.tetty.channelhandler.EchoRespQueueHandler;
 import com.tetty.channelhandler.HeartRespHandler;
 import com.tetty.channelhandler.LoginAuthRespHandler;
 import com.tetty.channelhandler.RespQueueHandler;
 import com.tetty.decode.TettyMessageDecoder;
 import com.tetty.encode.TettyMessageEncode;
-import com.tetty.listener.ReqHandlerListener;
 import com.tetty.pojo.Header;
 import com.tetty.pojo.TettyMessage;
 import io.netty.bootstrap.ServerBootstrap;
@@ -25,13 +25,13 @@ import java.util.List;
  */
 public class NettyServer {
 	private static Logger log = LoggerFactory.getLogger(NettyServer.class);
-	private List<RespQueueHandler> respQueueHandlers;
+	private List<? extends RespQueueHandler> respQueueHandlers;
 
 	public void start(int port){	
 		new Thread(new Bind(port)).start();
 	}
 
-	public void setRespQueueHandlers(List<RespQueueHandler> respQueueHandlers) {
+	public void setRespQueueHandlers(List<? extends RespQueueHandler> respQueueHandlers) {
 		this.respQueueHandlers = respQueueHandlers;
 	}
 	
@@ -79,25 +79,7 @@ public class NettyServer {
 			ch.pipeline().addLast(new LoginAuthRespHandler());
 			ch.pipeline().addLast(new HeartRespHandler());
 			//测试用的RespQueueHandler,实际使用中应该通过respQueueHandlers变量传入
-			ch.pipeline().addLast(new RespQueueHandler(new ReqHandlerListener() {
-				//echo
-				public void readReq(ChannelHandlerContext ctx, TettyMessage req) {
-					if(req.getHeader().getType() == Header.Type.ECHO_REQ){
-						log.info("server rec:"+req.getBody());
-						
-						TettyMessage resp = new TettyMessage();
-						Header header = new Header();
-						header.setType(Header.Type.ECHO_RESP);
-						
-						resp.setHeader(header);
-						resp.setBody(req.getBody());
-						
-						ctx.writeAndFlush(resp);
-					}else{
-						ctx.fireChannelRead(req);
-					}
-				}
-			}));
+			ch.pipeline().addLast(new EchoRespQueueHandler());
 			//传入自定义的respQueueHandler
 			if (respQueueHandlers != null) {
 				for (RespQueueHandler respQueueHandler : respQueueHandlers) {

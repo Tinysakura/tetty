@@ -1,24 +1,19 @@
 package com.tetty.channelhandler;
 
-import org.slf4j.LoggerFactory;
-
+import ch.qos.logback.classic.Logger;
+import com.tetty.pojo.TettyMessage;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-import ch.qos.logback.classic.Logger;
-
-import com.tetty.listener.ReqHandlerListener;
-import com.tetty.pojo.TettyMessage;
+import org.slf4j.LoggerFactory;
 
 /**
  * 服务端处理服务端发送的消息的Handler
  * @author Administrator
  */
-public class RespQueueHandler extends ChannelHandlerAdapter{
-	private ReqHandlerListener reqHandler;
+public abstract class RespQueueHandler extends ChannelHandlerAdapter{
 	private Logger log = (Logger)LoggerFactory.getLogger(RespQueueHandler.class);
 	
-	public RespQueueHandler(ReqHandlerListener reqHandler){
-		this.reqHandler = reqHandler;
+	public RespQueueHandler(){
 	}
 
 	@Override
@@ -33,9 +28,11 @@ public class RespQueueHandler extends ChannelHandlerAdapter{
 			throws Exception {
 		//只接受已登录用户的请求
 		if(LoginAuthRespHandler.loginedNode.containsKey(ctx.channel().remoteAddress().toString())){
-			reqHandler.readReq(ctx, (TettyMessage)msg);
+			readReq(ctx, (TettyMessage)msg);
 		}else{
 			log.info("未认证的用户");
 		}
 	}
+
+	public abstract void readReq(ChannelHandlerContext ctx, TettyMessage rec);
 }

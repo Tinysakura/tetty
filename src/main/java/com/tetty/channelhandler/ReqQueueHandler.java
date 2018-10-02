@@ -1,7 +1,6 @@
 package com.tetty.channelhandler;
 
 import ch.qos.logback.classic.Logger;
-import com.tetty.listener.RespHandlerListener;
 import com.tetty.pojo.Header;
 import com.tetty.pojo.TettyMessage;
 import io.netty.channel.ChannelHandler;
@@ -14,19 +13,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * 客户端发送请求的Handler
  * @author Administrator
- *
  */
 @ChannelHandler.Sharable
-public class ReqQueueHandler extends ChannelHandlerAdapter{
+public abstract class ReqQueueHandler extends ChannelHandlerAdapter{
 	Logger log = (Logger)LoggerFactory.getLogger(ReqQueueHandler.class);
 	//第一种方式，将要发送的消息放在阻塞队列中，开启一个线程读取阻塞队列中积压的消息进行发送
 	private LinkedBlockingQueue<TettyMessage> reqQueue = new LinkedBlockingQueue<TettyMessage>();
-	private RespHandlerListener respHandler;
 	private volatile boolean stop = false;
-	
-	public ReqQueueHandler(RespHandlerListener respHandler){
-		this.respHandler = respHandler;
-	}
+
+	public abstract void readResp(ChannelHandlerContext ctx, TettyMessage resp);
 	
 	public void sendReq(TettyMessage req){
 		try {
@@ -55,7 +50,7 @@ public class ReqQueueHandler extends ChannelHandlerAdapter{
 			//使用过程中发现了阻塞队列阻塞了主线程
 			//ctx.executor().execute(new MessageSendTask(ctx, reqQueue));
 		}else{//如果收到的是其他类型的消息直接交给respHandler处理
-			respHandler.readResp(ctx, rec);
+			readResp(ctx, rec);
 		}
 	}
 	

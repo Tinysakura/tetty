@@ -1,5 +1,6 @@
 package com.tetty.server;
 
+import com.tetty.channelhandler.EchoReqQueueHandler;
 import com.tetty.channelhandler.HeartReqHandler;
 import com.tetty.channelhandler.LoginAuthReqHandler;
 import com.tetty.channelhandler.ReqQueueHandler;
@@ -7,7 +8,6 @@ import com.tetty.common.ChannelContext;
 import com.tetty.consts.NettyConsts;
 import com.tetty.decode.TettyMessageDecoder;
 import com.tetty.encode.TettyMessageEncode;
-import com.tetty.listener.RespHandlerListener;
 import com.tetty.pojo.Header;
 import com.tetty.pojo.TettyMessage;
 import com.tetty.util.ChannelKeyGeneratorUtil;
@@ -36,13 +36,13 @@ import java.util.concurrent.ScheduledExecutorService;
  */
 public class NettyClient {
     static Logger log = LoggerFactory.getLogger(NettyClient.class);
-    private List<ReqQueueHandler> reqQueueHandlers;
+    private List<? extends ReqQueueHandler> reqQueueHandlers;
     private CountDownLatch latch;
 
     private ScheduledExecutorService scheduledExecutor =
             Executors.newScheduledThreadPool(1);
 
-    public void setReqQueueHandlers(List<ReqQueueHandler> reqQueueHandler) {
+    public void setReqQueueHandlers(List<? extends ReqQueueHandler> reqQueueHandler) {
         this.reqQueueHandlers = reqQueueHandler;
     }
 
@@ -83,8 +83,6 @@ public class NettyClient {
                             ch.pipeline().addLast(new ReadTimeoutHandler(50));//超时时间设置为50s
                             ch.pipeline().addLast("loginAuthReqHandler", new LoginAuthReqHandler());
                             ch.pipeline().addLast("heartBeatReqHandler", new HeartReqHandler());
-
-
                             //将所有的reqQueueHandler加入pipeline
                             if (reqQueueHandlers != null) {
                                 for (ReqQueueHandler reqQueueHandler : reqQueueHandlers) {
@@ -152,18 +150,7 @@ public class NettyClient {
         int port = 8888;
 
         NettyClient nettyClient = new NettyClient();
-        final ReqQueueHandler reqQueueHandler = new ReqQueueHandler(new RespHandlerListener() {
-            //echo
-            public void readResp(ChannelHandlerContext ctx, TettyMessage resp) {
-                byte type = resp.getHeader().getType();
-                if (type == Header.Type.ECHO_RESP) {
-                    log.info("echo:{}", resp.getBody());
-                } else {
-                    //如果消息不是ECHO类型的则将消息透传给下一个ChannelHandler
-                    ctx.fireChannelRead(resp);
-                }
-            }
-        });
+        EchoReqQueueHandler reqQueueHandler = new EchoReqQueueHandler();
 
         List<ReqQueueHandler> reqQueueHandlers = new ArrayList<ReqQueueHandler>();
         reqQueueHandlers.add(reqQueueHandler);
@@ -172,6 +159,7 @@ public class NettyClient {
 
         //使用一个闭锁等待异步的连接完成
         CountDownLatch countDownLatch = new CountDownLatch(1);
+
         try {
             nettyClient.start(host, port, countDownLatch);
             countDownLatch.await();
@@ -190,7 +178,7 @@ public class NettyClient {
                 public void run() {
                     while (true) {
                         TettyMessage echo = buildEcho();
-                        echo.setBody("卡面来打build");
+                        log.info("send msg");
 
                         channel.writeAndFlush(echo);
 
@@ -214,6 +202,7 @@ public class NettyClient {
         TettyMessage req = new TettyMessage();
         Header header = new Header();
         header.setType(Header.Type.ECHO_REQ);
+        req.setBody("卡面来打build");
 
         req.setHeader(header);
 

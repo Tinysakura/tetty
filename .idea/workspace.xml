@@ -2,21 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10fd3b4d-b58b-46c6-b7a8-2eae95c3af5f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/LoginAuthReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/LoginAuthReqHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoReqQueueHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoRespQueueHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/ReqQueueHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/ReqQueueHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/RespQueueHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/RespQueueHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tetty/listener/ReqHandlerListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tetty/listener/RespHandlerListener.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyClient$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyClient$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyClient$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyClient$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyClient$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyClient$Connect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyServer$Bind.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyServer$ChildChannelHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyServer$ChildChannelHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/netty/server/NettyServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tetty/common/NettyConsts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tetty/channelhandler/ReqQueueHandler$MessageSendTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tetty/channelhandler/ReqQueueHandler$MessageSendTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tetty/channelhandler/ReqQueueHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tetty/channelhandler/ReqQueueHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tetty/channelhandler/RespQueueHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tetty/channelhandler/RespQueueHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tetty/listener/ReqHandlerListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tetty/listener/RespHandlerListener.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,27 +31,52 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="NettyClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+            <state relative-caret-position="909">
+              <caret line="194" column="5" selection-start-line="194" selection-start-column="5" selection-end-line="194" selection-end-column="5" />
               <folding>
-                <element signature="e#2417#3443#0" expanded="true" />
-                <element signature="e#3442#3443#0" expanded="true" />
-                <element signature="e#4756#5161#0" expanded="true" />
-                <element signature="e#5160#5161#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3730#4512#0" expanded="true" />
+                <element signature="e#4511#4512#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReqQueueHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EchoRespQueueHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoRespQueueHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReqQueueHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/ReqQueueHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-560">
-              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+            <state relative-caret-position="-318">
+              <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1139#1140#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EchoReqQueueHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoReqQueueHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,8 +87,23 @@
       <file leaf-file-name="NettyServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-331">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="329">
+              <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RespQueueHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/RespQueueHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="684">
+              <caret line="36" column="78" selection-start-line="36" selection-start-column="78" selection-end-line="36" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,18 +128,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/RespQueueHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tetty/common/ChannelContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tetty/util/ChannelKeyGeneratorUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/netty/server/NettyServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/netty/server/NettyClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tetty/bootstrap/NettyServerBootstrap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tetty/enums/LoginStatusEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/LoginAuthRespHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/LoginAuthReqHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/ReqQueueHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/RespQueueHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoRespQueueHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoReqQueueHandler.java" />
       </list>
     </option>
   </component>
@@ -198,8 +239,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -341,66 +382,46 @@
       <option name="presentableId" value="Default" />
       <updated>1538453948475</updated>
       <workItem from="1538453952309" duration="4031000" />
+      <workItem from="1538468522247" duration="1835000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6457000" />
+    <option name="totallyTimeSpent" value="8292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32969698" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32969698" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3297568" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32969698" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
-      <window_info anchor="right" id="Database" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.16484849" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32969698" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2739394" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.13575758" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="3" side_tool="true" weight="0.3297568" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,33 +432,46 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-920">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        <state relative-caret-position="779">
+          <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1559#1560#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#2417#3443#0" expanded="true" />
-            <element signature="e#3442#3443#0" expanded="true" />
-            <element signature="e#6671#7267#0" expanded="true" />
-            <element signature="e#7266#7267#0" expanded="true" />
+            <element signature="e#3730#4512#0" expanded="true" />
+            <element signature="e#4511#4512#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyServer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-685">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state relative-caret-position="152">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/ReqQueueHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyServer.java" />
     <entry file="jar://$USER_HOME$/.m2/repository/io/netty/netty-all/5.0.0.Alpha1/netty-all-5.0.0.Alpha1.jar!/io/netty/buffer/Unpooled.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -463,13 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/RespQueueHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -515,29 +542,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="204" column="9" selection-start-line="204" selection-start-column="9" selection-end-line="204" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1559#1560#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#2417#3443#0" expanded="true" />
-            <element signature="e#3442#3443#0" expanded="true" />
-            <element signature="e#6671#7267#0" expanded="true" />
-            <element signature="e#7266#7267#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyServer.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/netty/server/NettyClient.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/encode/TettyMessageEncode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
@@ -563,12 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#378#379#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -593,30 +593,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java">
+    <entry file="jar://$USER_HOME$/.m2/repository/io/netty/netty-all/5.0.0.Alpha1/netty-all-5.0.0.Alpha1.jar!/io/netty/util/concurrent/GenericFutureListener.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-331">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="76">
+          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/RespQueueHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+        <state relative-caret-position="684">
+          <caret line="36" column="78" selection-start-line="36" selection-start-column="78" selection-end-line="36" selection-end-column="78" />
           <folding>
-            <element signature="e#2417#3443#0" expanded="true" />
-            <element signature="e#3442#3443#0" expanded="true" />
-            <element signature="e#4756#5161#0" expanded="true" />
-            <element signature="e#5160#5161#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/ReqQueueHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-560">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        <state relative-caret-position="-318">
+          <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="909">
+          <caret line="194" column="5" selection-start-line="194" selection-start-column="5" selection-end-line="194" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3730#4512#0" expanded="true" />
+            <element signature="e#4511#4512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/server/NettyServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoRespQueueHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tetty/channelhandler/EchoReqQueueHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
